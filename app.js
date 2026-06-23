@@ -6,6 +6,19 @@ const canvasUi = document.getElementById('canvas-ui');
 const loadingOverlay = document.getElementById('loading-overlay');
 const toast = document.getElementById('toast');
 
+// Adjust canvas width and height dynamically for mobile portrait screens
+const isPortraitMode = window.innerHeight > window.innerWidth && window.innerWidth <= 768;
+const CANVAS_WIDTH = isPortraitMode ? 720 : 1280;
+const CANVAS_HEIGHT = isPortraitMode ? 1280 : 720;
+
+// Apply dynamic resolutions to canvases
+canvasBg.width = CANVAS_WIDTH;
+canvasBg.height = CANVAS_HEIGHT;
+canvasDrawing.width = CANVAS_WIDTH;
+canvasDrawing.height = CANVAS_HEIGHT;
+canvasUi.width = CANVAS_WIDTH;
+canvasUi.height = CANVAS_HEIGHT;
+
 const ctxBg = canvasBg.getContext('2d');
 const ctxDrawing = canvasDrawing.getContext('2d', { willReadFrequently: true });
 const ctxUi = canvasUi.getContext('2d');
@@ -14,8 +27,6 @@ const colorButtons = document.querySelectorAll('.color-btn');
 const actionButtons = document.querySelectorAll('.action-btn');
 
 // ---------- APP CONFIG / STATE ----------
-const CANVAS_WIDTH = 1280;
-const CANVAS_HEIGHT = 720;
 const BRUSH_THICKNESS = 12;
 
 let currentDrawingColor = '#FF0000'; // Default is Red
