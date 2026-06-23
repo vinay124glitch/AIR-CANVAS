@@ -16,3 +16,7 @@ captures/
 # IDE/Editor settings
 .vscode/
 .idea/
+
+# PyInstaller build output
+build/
+dist/
