@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎨 Virtual Air Canvas - Real-Time Hand-Gesture Drawing</title>
+  <meta name="description" content="Draw in mid-air using your webcam and hand gestures. An interactive, computer-vision powered drawing experience in your browser.">
+  
+  <!-- Google Fonts: Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- MediaPipe Hands CDN Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- Main Application Wrapper -->
+  <main class="app-container">
+
+    <!-- Canvas Layers and Controls -->
+    <div class="canvas-viewport">
+      
+      <!-- Top Action Menu (Glassmorphism Overlay) -->
+      <header class="glass-header" id="control-panel">
+        <!-- App Title -->
+        <div class="logo">
+          <h1>Air Canvas</h1>
+          <span class="badge">Web Version</span>
+        </div>
+
+        <!-- Color Palette -->
+        <div class="palette-container">
+          <span class="label">Colors</span>
+          <div class="palette">
+            <button class="color-btn active" id="btn-red" data-color="#FF0000" style="background-color: #FF0000;"></button>
+            <button class="color-btn" id="btn-green" data-color="#00FF00" style="background-color: #00FF00;"></button>
+            <button class="color-btn" id="btn-blue" data-color="#0000FF" style="background-color: #0000FF;"></button>
+            <button class="color-btn" id="btn-yellow" data-color="#FFFF00" style="background-color: #FFFF00;"></button>
+            <button class="color-btn" id="btn-magenta" data-color="#FF00FF" style="background-color: #FF00FF;"></button>
+            <button class="color-btn eraser-btn" id="btn-black" data-color="#0A0A0A" style="background-color: #0A0A0A;" title="Eraser"></button>
+          </div>
+        </div>
+
+        <!-- Canvas Actions -->
+        <div class="actions-container">
+          <span class="label">Actions</span>
+          <div class="actions">
+            <button class="action-btn" id="btn-undo" title="Undo (Hover to activate)">Undo</button>
+            <button class="action-btn" id="btn-redo" title="Redo (Hover to activate)">Redo</button>
+            <button class="action-btn" id="btn-clear" title="Clear Canvas (Hover to activate)">Clear</button>
+            <button class="action-btn save-btn" id="btn-save" title="Save Masterpiece (Hover to activate)">Save</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Hidden Video Element for webcam capture -->
+      <video id="webcam" autoplay playsinline muted></video>
+
+      <!-- Canvas layers stacked on top of each other -->
+      <div class="canvas-stack">
+        <canvas id="canvas-bg" width="1280" height="720"></canvas>
+        <canvas id="canvas-drawing" width="1280" height="720"></canvas>
+        <canvas id="canvas-ui" width="1280" height="720"></canvas>
+      </div>
+
+      <!-- Instruction Floating Badge -->
+      <div class="instruction-badge">
+        <div class="gesture-help">
+          <p>👆 <strong>Index Up:</strong> Draw</p>
+          <p>✌️ <strong>Index + Middle Up:</strong> Selection Mode (Hover over buttons to click)</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Loading Screen Overlay -->
+    <div class="overlay" id="loading-overlay">
+      <div class="spinner-container">
+        <div class="spinner"></div>
+        <h2>Setting up your Canvas...</h2>
+        <p>Loading computer vision models and starting webcam...</p>
+        <p class="camera-instruction">Please grant webcam permissions when prompted.</p>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">Saved to Downloads!</div>
+
+  </main>
+
+  <!-- Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>

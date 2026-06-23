@@ -1,0 +1,418 @@
+/* ==========================================
+   🎨 DESIGN SYSTEM & RESET
+   ========================================== */
+
+:root {
+  --bg-primary: #0f1016;
+  --bg-card: rgba(22, 24, 35, 0.7);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --border-active: rgba(255, 255, 255, 0.6);
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+  
+  --accent-color: #3b82f6;
+  --accent-glowing: rgba(59, 130, 246, 0.4);
+  
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-family);
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ==========================================
+   🖥️ LAYOUT CONTAINER
+   ========================================== */
+
+.app-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+/* ==========================================
+   💎 GLASSMORPHISM HEADER / CONTROL PANEL
+   ========================================== */
+
+.glass-header {
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  width: 92%;
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 2rem;
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #60a5fa, #3b82f6, #ec4899);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.5px;
+}
+
+.badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  background: rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: #60a5fa;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Controls containers */
+.palette-container, .actions-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.palette, .actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* ==========================================
+   🔘 BUTTON DESIGNS
+   ========================================== */
+
+/* Color Selection Buttons */
+.color-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  position: relative;
+  transition: var(--transition-smooth);
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.color-btn:hover {
+  transform: scale(1.15);
+}
+
+.color-btn.active {
+  border-color: #ffffff;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+/* Special styling for Black/Eraser button */
+.eraser-btn {
+  border: 1.5px dashed rgba(255, 255, 255, 0.3);
+}
+.eraser-btn::after {
+  content: '🧹';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.8rem;
+}
+
+.eraser-btn.active {
+  border: 2px solid #ffffff;
+}
+
+/* Action Buttons */
+.action-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 0.5rem 1.1rem;
+  border-radius: 12px;
+  font-weight: 500;
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.action-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--border-active);
+  transform: translateY(-1px);
+}
+
+.save-btn {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.4));
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+.save-btn:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(59, 130, 246, 0.6));
+  border-color: #3b82f6;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+}
+
+/* Hover-selection indicator (micro-animation for hand gesture selection) */
+.btn-hover-progress {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ==========================================
+   📹 CANVAS VIEWPORT & LAYERING
+   ========================================== */
+
+.canvas-viewport {
+  position: relative;
+  width: 100%;
+  max-width: 1280px;
+  aspect-ratio: 16 / 9;
+  background-color: #050508;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#webcam {
+  display: none; /* Keep webcam raw stream invisible */
+}
+
+.canvas-stack {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.canvas-stack canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+}
+
+/* Layer order */
+#canvas-bg {
+  z-index: 1; /* Webcam background */
+}
+
+#canvas-drawing {
+  z-index: 2; /* Persistent drawings */
+}
+
+#canvas-ui {
+  z-index: 3; /* Hand landmarks, hover loader, custom cursor */
+  pointer-events: none; /* Allow interaction through JS, not normal mouse */
+}
+
+/* ==========================================
+   🏷️ GESTURE INSTRUCTION FLOATING BADGE
+   ========================================== */
+
+.instruction-badge {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.gesture-help {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.gesture-help p {
+  font-size: 0.85rem;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.gesture-help strong {
+  color: #3b82f6;
+}
+
+/* ==========================================
+   ⏳ LOADING OVERLAY
+   ========================================== */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(10, 11, 18, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s ease;
+}
+
+.overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.spinner-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 450px;
+  padding: 2rem;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(59, 130, 246, 0.1);
+  border-left-color: var(--accent-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  box-shadow: 0 0 15px var(--accent-glowing);
+}
+
+.spinner-container h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.spinner-container p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.camera-instruction {
+  font-weight: 600;
+  color: #fbbf24 !important; /* Warning gold */
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ==========================================
+   🔔 TOAST NOTIFICATIONS
+   ========================================== */
+
+.toast {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  z-index: 200;
+  background: rgba(16, 185, 129, 0.9); /* Green */
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  transform: translateY(-50px);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  pointer-events: none;
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ==========================================
+   📱 RESPONSIVE MEDIA QUERIES
+   ========================================== */
+
+@media (max-width: 1024px) {
+  .glass-header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.2rem;
+    top: 1rem;
+  }
+  .app-container {
+    padding-top: 10rem;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .logo h1 {
+    font-size: 1.25rem;
+  }
+  .palette-container, .actions-container {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .gesture-help {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
