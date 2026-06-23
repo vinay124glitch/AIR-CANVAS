@@ -1,0 +1,18 @@
+# Virtual environments
+venv/
+venv312/
+run_env/
+run_env2/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Local captures
+captures/
+
+# IDE/Editor settings
+.vscode/
+.idea/

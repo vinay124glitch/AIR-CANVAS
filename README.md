@@ -1,35 +1,39 @@
-# 🎨 Air Canvas
+# 🎨 Virtual Air Canvas
 
-A **real-time gesture-based drawing application** that allows users to draw on a virtual canvas by moving their fingers in the air. This project uses **Computer Vision** techniques to track hand landmarks and convert gestures into digital strokes — no mouse, no stylus, no touchscreen required.
+A **real-time gesture-based drawing application** that allows users to draw on a virtual canvas by moving their fingers in the air. Using **Computer Vision** techniques to track hand landmarks, this project converts gestures into digital strokes with no mouse, stylus, or touchscreen required.
 
 ---
 
 ## 🚀 Features
 
-* Real-time hand tracking using a webcam
-* Finger-based drawing in mid-air
-* Touch-free interaction
-* Smooth and low-latency drawing experience
-* Simple and intuitive gesture controls
+- **Real-Time Hand Tracking:** Low-latency tracking using Google MediaPipe.
+- **Air Drawing:** Select from a variety of colors and draw in mid-air.
+- **Interactive UI Menu:** Hover over screen menus to select actions.
+- **Action Controls:**
+  - **Colors:** Red, Green, Blue, Yellow, Magenta, and Black.
+  - **Canvas Actions:** `CLEAR`, `SAVE` (saves composition in `captures/`), `UNDO`, and `REDO`.
+- **Keyboard Shortcuts:** Press `c` to clear the canvas, and `Esc` to exit.
+- **Easy Setup:** Pre-configured environment scripts for Windows and Unix.
 
 ---
 
 ## 🛠️ Tech Stack
 
-* **Python**
-* **OpenCV** – video processing and rendering
-* **MediaPipe** – hand landmark detection
-* **NumPy** – numerical operations
+- **Python**
+- **OpenCV** – Video processing and canvas rendering
+- **MediaPipe** – Hand landmark detection
+- **NumPy** – High-performance matrix operations
 
 ---
 
 ## ⚙️ How It Works
 
-1. Captures live video feed from the webcam
-2. Detects hand landmarks using MediaPipe
-3. Tracks fingertip coordinates frame-by-frame
-4. Recognizes drawing gestures
-5. Maps finger movement to strokes on a virtual canvas
+1. **Video Capture:** Captures live feed from the webcam (mirrored for natural interaction).
+2. **Landmark Detection:** Detects hand landmarks and coordinates.
+3. **Gesture Controls:**
+   - 👆 **Index finger up ONLY:** Drawing mode (draws with the current color).
+   - ✌️ **Index + Middle fingers up:** Selection/UI mode (hover over menu boxes to select colors or trigger actions like Save, Clear, Undo, and Redo).
+   - ✊ **All other hand poses:** Hover/resting mode (stops drawing/selection).
 
 ---
 
@@ -37,56 +41,59 @@ A **real-time gesture-based drawing application** that allows users to draw on a
 
 ```
 Air-Canvas/
-│── air_canvas.py
-│── requirements.txt
-│── README.md
+├── air_canvas.py       # Main application source code
+├── requirements.txt    # Python library dependencies
+├── run_windows.bat     # Automated setup & run script for Windows
+├── run_unix.sh         # Automated setup & run script for Linux/Mac
+└── README.md           # Documentation
 ```
 
 ---
 
 ## ▶️ Installation & Usage
 
-### 1️⃣ Clone the Repository
+### Method 1: Quick Start (Automated Scripts)
 
+#### 💻 Windows
+Simply double-click `run_windows.bat` or run it from the Command Prompt:
+```cmd
+run_windows.bat
+```
+*This script will automatically create a virtual environment (`venv`), install dependencies, and launch the application.*
+
+#### 🐧 Linux / 🍎 Mac
+Open your terminal in the repository folder and run:
 ```bash
-git clone https://github.com/your-username/Air-Canvas.git
-cd Air-Canvas
+chmod +x run_unix.sh
+./run_unix.sh
 ```
 
-### 2️⃣ Install Dependencies
+### Method 2: Manual Installation
 
-```bash
-pip install -r requirements.txt
-```
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/vinay124glitch/AIR-CANVAS.git
+   cd AIR-CANVAS
+   ```
 
-### 3️⃣ Run the Application
+2. **Create and Activate a Virtual Environment:**
+   ```bash
+   python -m venv venv
+   # On Windows:
+   .\venv\Scripts\activate
+   # On Linux/Mac:
+   source venv/bin/activate
+   ```
 
-```bash
-python air_canvas.py
-```
+3. **Install Dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
----
-
-## 📌 Controls (Example)
-
-* **Index finger up** → Draw
-* **Multiple fingers** → Pause drawing / Reset (customizable)
-
----
-
-## 🌱 Future Enhancements
-
-* Color selection using gestures
-* Shape recognition
-* Multi-hand support
-* Save drawings as images
-* AR/VR integration
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Feel free to fork this repository and submit a pull request.
+4. **Run the Application:**
+   ```bash
+   python air_canvas.py
+   ```
 
 ---
 
@@ -98,7 +105,5 @@ This project is open-source and available under the **MIT License**.
 
 ## ⭐ Acknowledgements
 
-* OpenCV Community
-* Google MediaPipe
-
-If you found this project useful, don’t forget to ⭐ the repository!
+- OpenCV Community
+- Google MediaPipe
