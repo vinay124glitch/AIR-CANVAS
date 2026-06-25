@@ -3,6 +3,28 @@
 A **real-time gesture-based drawing application** that allows users to draw on a virtual canvas by moving their fingers in the air. Using **Computer Vision** techniques to track hand landmarks, this project converts gestures into digital strokes with no mouse, stylus, or touchscreen required.
 
 ---
+# 🎨 Virtual Air Canvas
+
+A **real-time gesture-based drawing application** that allows users to draw on a virtual canvas by moving their fingers in the air. Using **Computer Vision** techniques to track hand landmarks, this project converts gestures into digital strokes with no mouse, stylus, or touchscreen required.
+
+## 🌐 Live Demo
+
+🔗 **Try it here:  https://air-canvas-gestures.netlify.app/
+
+---
+
+## 🚀 Features
+
+* **Real-Time Hand Tracking:** Low-latency tracking using Google MediaPipe.
+* **Air Drawing:** Select from a variety of colors and draw in mid-air.
+* **Interactive UI Menu:** Hover over screen menus to select actions.
+* **Action Controls:**
+
+  * **Colors:** Red, Green, Blue, Yellow, Magenta, and Black.
+  * **Canvas Actions:** `CLEAR`, `SAVE` (saves composition in `captures/`), `UNDO`, and `REDO`.
+* **Keyboard Shortcuts:** Press `c` to clear the canvas, and `Esc` to exit.
+* **Easy Setup:** Pre-configured environment scripts for Windows and Unix.
+
 
 ## 🚀 Features
 
